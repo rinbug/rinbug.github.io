@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- edit site title here -->
+  <title>✧ My Site ✧</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Crafty+Girls&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!--
+    USAGE:
+
+    CHANGING SITE TITLE:
+      Edit the <title> tag above and the <h1> below.
+
+    ADDING A NEW TAB:
+      1. Add a button to the tab bar:
+           <button class="tab-btn" data-tab="mypage">my page</button>
+        
+         NOTE: the data-tab value ('mypage' in this instance) must be unique
+
+      2. Add a matching section inside <main>:
+
+           <section class="tab-content" id="mypage">
+             <article class="content-card">
+               (your content here)
+             </article>
+           </section>
+
+         NOTE: The id='mypage' must match the data-tab value from your tab bar button
+
+    ADDING SONGS TO THE MUSIC PLAYER:
+      Open script.js and add a line to the playlist:
+        { title: "Song Name", artist: "Artist Name", file: "song.mp3" },
+      - title:  shown in the player bar
+      - artist: shown next to the title (use "" for no artist)
+      - file:   the filename inside the music/ folder
+  -->
+
+  <div class="sparkles" aria-hidden="true">
+    <span class="sparkle far">✧</span>
+    <span class="sparkle far">☆</span>
+    <span class="sparkle far">✧</span>
+    <span class="sparkle far">☆</span>
+    <span class="sparkle far">✧</span>
+    <span class="sparkle mid">✦</span>
+    <span class="sparkle mid">★</span>
+    <span class="sparkle mid">✦</span>
+    <span class="sparkle mid">★</span>
+    <span class="sparkle mid">✦</span>
+    <span class="sparkle near">★</span>
+    <span class="sparkle near">✦</span>
+    <span class="sparkle near">★</span>
+    <span class="sparkle near">✦</span>
+    <span class="sparkle near">★</span>
+  </div>
+
+  <!-- header title -->
+  <header class="container site-header">
+    <h1 class="site-title">a website</h1>
+  </header>
+
+  <!-- tab buttons -->
+  <nav class="container tab-bar">
+    <button class="tab-btn active" data-tab="home">home</button>
+    <button class="tab-btn" data-tab="about">about</button>
+    <button class="tab-btn" data-tab="demo">demo</button>
+    <span class="tab-spacer"></span>
+    <button id="theme-toggle" class="tab-icon-btn" title="Toggle light/dark mode">☀</button>
+  </nav>
+
+  <!-- music player -->
+  <div class="container player-wrapper">
+    <div class="player-bar">
+      <button id="btn-prev" class="player-btn" title="Previous">⏮</button>
+      <button id="btn-play" class="player-btn play-btn" title="Play / Pause">▶</button>
+      <button id="btn-next" class="player-btn" title="Next">⏭</button>
+
+      <div class="player-title-wrapper">
+        <span id="player-title" class="player-title">No song selected</span>
+      </div>
+
+      <span id="time-current" class="player-time">0:00</span>
+      <input type="range" id="progress-bar" class="progress-bar" min="0" max="100" value="0" step="0.1">
+      <span id="time-total" class="player-time">0:00</span>
+
+      <div class="player-volume-area">
+        <svg class="volume-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        <input type="range" id="volume-bar" class="volume-bar" min="0" max="100" value="80" step="1">
+      </div>
+
+      <button id="btn-queue" class="player-btn queue-toggle-btn" title="Toggle queue">☰</button>
+    </div>
+
+    <div class="queue-panel" id="queue-panel">
+      <div class="queue-panel-list" id="playlist-panel"></div>
+    </div>
+  </div>
+
+  <!-- tab pages -->
+  <main class="container content-area">
+
+    <section class="tab-content active" id="home">
+      <article class="content-card">
+        <h2>header text</h2>
+
+        <p>
+          placeholder text!!
+        </p>
+
+        <p>
+          put stuff between <code>&lt;p&gt;</code> and <code>&lt;/p&gt;</code>.
+        </p>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <img src="images/lettuce.jpg" alt="lettuce">
+      </article>
+    </section>
+
+    <section class="tab-content" id="about">
+      <article class="content-card">
+        <h2>About heading here</h2>
+
+        <p>
+          Placeholder text about yourself. Write anything you want here —
+          your hobbies, interests, what this site is for, etc.
+        </p>
+
+        <p>
+          This is another paragraph. You can delete it, keep it, or add
+          more — totally up to you.
+        </p>
+
+        <div class="decorative-divider">· · ♡ · ·</div>
+
+        <h3>Subheading here</h3>
+        <ul>
+          <li>List item one</li>
+          <li>List item two</li>
+          <li>List item three</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="tab-content" id="demo">
+      <article class="content-card">
+        <h2>demo page</h2>
+        <p>
+          this page shows examples of stuff you can use on your site!
+          copy any of these into your own pages.
+        </p>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <h3>headings</h3>
+        <h2>heading 2</h2>
+        <h3>heading 3</h3>
+        <h4>heading 4</h4>
+        <pre><code>&lt;h2&gt;heading 2&lt;/h2&gt;
+&lt;h3&gt;heading 3&lt;/h3&gt;
+&lt;h4&gt;heading 4&lt;/h4&gt;</code></pre>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <h3>text styles</h3>
+        <p>this is a normal paragraph.</p>
+        <p><strong>bold text</strong></p>
+        <p><em>italic text</em></p>
+        <p><small>small text</small></p>
+        <p><del>strikethrough text</del></p>
+        <p><mark>highlighted text</mark></p>
+        <p><strong><em>bold italic text</em></strong></p>
+        <pre><code>&lt;p&gt;this is a normal paragraph.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;bold text&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;italic text&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;small text&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;strikethrough text&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;highlighted text&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;bold italic text&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</code></pre>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <h3>links</h3>
+        <p><a href="https://example.com">click me!</a></p>
+        <pre><code>&lt;a href="https://example.com"&gt;click me!&lt;/a&gt;</code></pre>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <h3>images</h3>
+        <img src="images/lettuce.jpg" alt="lettuce">
+        <pre><code>&lt;img src="images/lettuce.jpg" alt="lettuce"&gt;</code></pre>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <h3>bullet list</h3>
+        <ul>
+          <li>first item</li>
+          <li>second item</li>
+          <li>third item</li>
+        </ul>
+        <pre><code>&lt;ul&gt;
+  &lt;li&gt;first item&lt;/li&gt;
+  &lt;li&gt;second item&lt;/li&gt;
+  &lt;li&gt;third item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+        <h3>numbered list</h3>
+        <ol>
+          <li>step one</li>
+          <li>step two</li>
+          <li>step three</li>
+        </ol>
+        <pre><code>&lt;ol&gt;
+  &lt;li&gt;step one&lt;/li&gt;
+  &lt;li&gt;step two&lt;/li&gt;
+  &lt;li&gt;step three&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <h3>blockquote</h3>
+        <blockquote>
+          "a nice quote or song lyric goes here!"
+          <footer><cite>— someone cool</cite></footer>
+        </blockquote>
+        <pre><code>&lt;blockquote&gt;
+  "a nice quote or song lyric goes here!"
+  &lt;footer&gt;&lt;cite&gt;— someone cool&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;</code></pre>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <h3>code</h3>
+        <p>inline: <code>like this</code></p>
+        <pre><code>&lt;code&gt;like this&lt;/code&gt;</code></pre>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <h3>horizontal line</h3>
+        <hr>
+        <pre><code>&lt;hr&gt;</code></pre>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <h3>table</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>name</th>
+              <th>favorite color</th>
+              <th>rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>alice</td>
+              <td>pink</td>
+              <td>10/10</td>
+            </tr>
+            <tr>
+              <td>bob</td>
+              <td>blue</td>
+              <td>8/10</td>
+            </tr>
+          </tbody>
+        </table>
+        <pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;favorite color&lt;/th&gt;
+      &lt;th&gt;rating&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;alice&lt;/td&gt;
+      &lt;td&gt;pink&lt;/td&gt;
+      &lt;td&gt;10/10&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <h3>expandable sections</h3>
+        <details>
+          <summary>click to expand me!</summary>
+          <p>hidden content goes here! great for FAQs.</p>
+        </details>
+        <pre><code>&lt;details&gt;
+  &lt;summary&gt;click to expand me!&lt;/summary&gt;
+  &lt;p&gt;hidden content goes here!&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <h3>image with caption</h3>
+        <figure>
+          <img src="images/lettuce.jpg" alt="lettuce">
+          <figcaption>a caption goes under the image</figcaption>
+        </figure>
+        <pre><code>&lt;figure&gt;
+  &lt;img src="images/lettuce.jpg" alt="lettuce"&gt;
+  &lt;figcaption&gt;a caption goes under the image&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+        <div class="decorative-divider">· · ✦ · ·</div>
+
+        <h3>keyboard keys</h3>
+        <p>press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy</p>
+        <pre><code>&lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt;</code></pre>
+
+        <h3>abbreviations</h3>
+        <p>hover over this: <abbr title="Hypertext Markup Language">HTML</abbr></p>
+        <pre><code>&lt;abbr title="Hypertext Markup Language"&gt;HTML&lt;/abbr&gt;</code></pre>
+      </article>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
